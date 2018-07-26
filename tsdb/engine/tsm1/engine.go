@@ -54,9 +54,9 @@ var (
 	// Ensure Engine implements the interface.
 	_ tsdb.Engine = &Engine{}
 	// Static objects to prevent small allocs.
-	timeBytes              = []byte("time")
-	keyFieldSeparatorBytes = []byte(keyFieldSeparator)
-	emptyBytes             = []byte{}
+	timeBytes                            = []byte("time")
+	keyFieldSeparatorBytes  = []byte(keyFieldSeparator)
+	emptyBytes             []byte
 )
 
 var (

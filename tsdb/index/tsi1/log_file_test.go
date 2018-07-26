@@ -335,7 +335,7 @@ func GenerateLogFile(sfile *tsdb.SeriesFile, measurementN, tagN, valueN int) (*L
 			var tags models.Tags
 			for k := 0; k < tagN; k++ {
 				key := []byte(fmt.Sprintf("key%d", k))
-				value := []byte(fmt.Sprintf("value%d", (j / pow(valueN, k) % valueN)))
+				value := []byte(fmt.Sprintf("value%d", j / pow(valueN, k) % valueN))
 				tags = append(tags, models.NewTag(key, value))
 			}
 			if err := f.AddSeriesList(seriesSet, [][]byte{name}, []models.Tags{tags}); err != nil {
@@ -373,7 +373,7 @@ func benchmarkLogFile_AddSeries(b *testing.B, measurementN, seriesKeyN, seriesVa
 			var tags models.Tags
 			for k := 0; k < seriesKeyN; k++ {
 				key := []byte(fmt.Sprintf("key%d", k))
-				value := []byte(fmt.Sprintf("value%d", (j / pow(seriesValueN, k) % seriesValueN)))
+				value := []byte(fmt.Sprintf("value%d", j / pow(seriesValueN, k) % seriesValueN))
 				tags = append(tags, models.NewTag(key, value))
 			}
 			data = append(data, Datum{Name: name, Tags: tags})

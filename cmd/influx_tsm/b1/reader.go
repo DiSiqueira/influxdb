@@ -14,7 +14,7 @@ import (
 )
 
 // DefaultChunkSize is the size of chunks read from the b1 shard
-const DefaultChunkSize int = 1000
+const DefaultChunkSize = 1000
 
 var excludedBuckets = map[string]bool{
 	"fields": true,

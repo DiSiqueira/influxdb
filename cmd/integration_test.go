@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	client "github.com/influxdata/influxdb/client/v2"
+	"github.com/influxdata/influxdb/client/v2"
 	"github.com/influxdata/influxdb/cmd/influxd/run"
 	"github.com/influxdata/influxdb/services/httpd"
 )

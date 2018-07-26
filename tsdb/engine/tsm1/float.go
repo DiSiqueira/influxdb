@@ -257,7 +257,7 @@ func (it *FloatDecoder) Next() bool {
 		}
 
 		vbits := it.val
-		vbits ^= (bits << it.trailing)
+		vbits ^= bits << it.trailing
 
 		if vbits == uvnan { // IsNaN
 			it.finished = true

@@ -793,7 +793,7 @@ func (w *WriteWALEntry) UnmarshalBinary(b []byte) error {
 			for j := 0; j < nvals; j++ {
 				un := int64(binary.BigEndian.Uint64(b[i : i+8]))
 				i += 8
-				v := math.Float64frombits((binary.BigEndian.Uint64(b[i : i+8])))
+				v := math.Float64frombits(binary.BigEndian.Uint64(b[i : i+8]))
 				i += 8
 				values = append(values, NewFloatValue(un, v))
 			}

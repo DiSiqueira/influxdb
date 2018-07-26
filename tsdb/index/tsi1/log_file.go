@@ -1207,7 +1207,7 @@ func (m *logMeasurement) bytes() int {
 		b += len(k)
 		b += v.bytes()
 	}
-	b += (int(m.cardinality()) * 8)
+	b += int(m.cardinality()) * 8
 	b += int(unsafe.Sizeof(*m))
 	return b
 }
@@ -1384,7 +1384,7 @@ func (tv *logTagValue) bytes() int {
 	var b int
 	b += len(tv.name)
 	b += int(unsafe.Sizeof(*tv))
-	b += (int(tv.cardinality()) * 8)
+	b += int(tv.cardinality()) * 8
 	return b
 }
 

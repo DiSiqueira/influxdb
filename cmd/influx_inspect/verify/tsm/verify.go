@@ -51,7 +51,7 @@ func (cmd *Command) Run(args ...string) error {
 	ext := fmt.Sprintf(".%s", tsm1.TSMFileExtension)
 
 	// Get all TSM files by walking through the data dir
-	files := []string{}
+	var files []string
 	err := filepath.Walk(dataPath, func(path string, f os.FileInfo, err error) error {
 		if err != nil {
 			return err

@@ -90,7 +90,7 @@ func TestDeletePrefix(t *testing.T) {
 			t.Fatalf("Bad delete, expected %v to be deleted but got %v", test.numDeleted, deleted)
 		}
 
-		out := []string{}
+		var out []string
 		fn := func(s []byte, v int) bool {
 			out = append(out, string(s))
 			return false

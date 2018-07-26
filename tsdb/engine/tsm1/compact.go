@@ -526,7 +526,7 @@ func (c *DefaultPlanner) Plan(lastWrite time.Time) []CompactionGroup {
 
 	// Loop through the generations in groups of size step and see if we can compact all (or
 	// some of them as group)
-	groups := []tsmGenerations{}
+	var groups []tsmGenerations
 	for i := 0; i < len(generations); i += step {
 		var skipGroup bool
 		startIndex := i
@@ -567,7 +567,7 @@ func (c *DefaultPlanner) Plan(lastWrite time.Time) []CompactionGroup {
 	}
 
 	// With the groups, we need to evaluate whether the group as a whole can be compacted
-	compactable := []tsmGenerations{}
+	var compactable []tsmGenerations
 	for _, group := range groups {
 		//if we don't have enough generations to compact, skip it
 		if len(group) < 4 && !group.hasTombstones() {

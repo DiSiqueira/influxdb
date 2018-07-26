@@ -35,7 +35,7 @@ func (r *BitReader) CanReadBitFast() bool { return r.buf.n > 1 }
 // ReadBitFast is an optimized bit read.
 // IMPORTANT: Only allowed if CanReadFastBit() is true!
 func (r *BitReader) ReadBitFast() bool {
-	v := (r.buf.v&(1<<63) != 0)
+	v := r.buf.v&(1<<63) != 0
 	r.buf.v <<= 1
 	r.buf.n -= 1
 	return v
@@ -66,7 +66,7 @@ func (r *BitReader) ReadBits(nbits uint) (uint64, error) {
 		}
 
 		// Otherwise mask returned bits.
-		v := (r.buf.v >> (64 - nbits))
+		v := r.buf.v >> (64 - nbits)
 		r.buf.v <<= nbits
 		r.buf.n -= nbits
 
@@ -84,7 +84,7 @@ func (r *BitReader) ReadBits(nbits uint) (uint64, error) {
 	r.readBuf()
 
 	// Append new buffer to previous buffer and shift to remove unnecessary bits.
-	v |= (r.buf.v >> n)
+	v |= r.buf.v >> n
 	v >>= 64 - nbits
 
 	// Remove used bits from new buffer.
